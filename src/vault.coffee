@@ -28,9 +28,9 @@ servicequeue = ->
   msg.send {room: msg.message.user.name}, out
 
 isAuthorized = (robot, msg) ->
-  if robot.auth.isAdmin(msg.envelope.user) or robot.auth.hasRole(msg.envelope.user,tfRole)
+  if robot.auth.isAdmin(msg.envelope.user) or robot.auth.hasRole(msg.envelope.user,modrole)
     return true
-  msg.send {room: msg.message.user.name}, "Not authorized.  Missing `#{tfRole}` role."
+  msg.send {room: msg.message.user.name}, "Not authorized.  Missing `#{modrole}` role."
   return false
 
 fileExistsSendAndReturnTrue = (msg, file, failresponse) ->
@@ -56,7 +56,7 @@ execAndSendOutput = (msg, cmd) ->
 
 module.exports = (robot) ->
 
-  robot.respond /tf help$/, (msg) ->
+  robot.respond /vault help$/, (msg) ->
     cmds = []
     arr = [
       "#{modname} token-lookup - get info about current token"
