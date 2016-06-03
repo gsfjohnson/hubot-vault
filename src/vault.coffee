@@ -7,9 +7,6 @@
 # Configuration:
 #   None
 #
-# Commands:
-#   hubot vault help - list commands
-#
 # Author:
 #   gsfjohnson
 
@@ -57,6 +54,8 @@ execAndSendOutput = (msg, cmd) ->
 module.exports = (robot) ->
 
   robot.respond /vault help$/, (msg) ->
+    return unless isAuthorized robot, msg
+
     cmds = []
     arr = [
       "#{modname} token-lookup - get info about current token"
